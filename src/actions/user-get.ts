@@ -8,6 +8,7 @@ export type User = {
   id: number;
   email: string;
   username: string;
+  nome: string;
 };
 
 export default async function userGet() {

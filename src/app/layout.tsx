@@ -16,12 +16,12 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const { data } = await userGet();
+  const { data: user } = await userGet();
 
   return (
     <html lang="pt-BR">
       <body className={type_second_spectral.variable}>
-        <UserContextProvider user={data}>
+        <UserContextProvider user={user}>
           <div className="App">
             <Header />
             <main className="AppBody">{children}</main>
