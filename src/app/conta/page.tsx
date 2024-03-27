@@ -1,4 +1,8 @@
-"use client";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Minha Conta | Dogs",
+};
 
 export default function ContaPage() {
   return (

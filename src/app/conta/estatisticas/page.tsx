@@ -1,7 +1,13 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Estatísticas | Minha Conta",
+};
+
 export default function EstatisticasPage() {
   return (
     <div>
-      <h1>estatisticasPage</h1>
+      <h1>Estatistica</h1>
     </div>
   );
 }
