@@ -1,7 +1,29 @@
-export default function FotoIdPage({ params }: { params: { id: number } }) {
+import photoGet from "@/actions/photo-get";
+import PhotoContent from "@/components/photo/photo-content";
+import { notFound } from "next/navigation";
+
+type FotoIdParams = {
+  params: {
+    id: string;
+  };
+};
+
+export async function generateMetadata({ params }: FotoIdParams) {
+  const { data } = await photoGet(params.id);
+  if (!data) return { title: "Dog - Imagem não encontrada" };
+  return {
+    title: `Dog - ${data?.photo.title}`,
+  };
+}
+
+export default async function FotoIdPage({ params }: FotoIdParams) {
+  const { data } = await photoGet(params.id);
+
+  if (!data) return notFound();
+
   return (
-    <div>
-      <h1>Foto Id {params.id}</h1>
-    </div>
+    <section className="container mainContainer">
+      <PhotoContent data={data} single={true} />
+    </section>
   );
 }
